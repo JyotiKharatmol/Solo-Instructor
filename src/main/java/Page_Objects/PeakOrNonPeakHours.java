@@ -46,6 +46,7 @@ public class PeakOrNonPeakHours extends Solo_AbstractComponents
 
 	public WebElement peakOrNonPeakHours_saveAndContinue()
 	{
+		waitForVisibilityOfElement(peakOrNonPeakHours_saveAndContinue);
 		return peakOrNonPeakHours_saveAndContinue;
 	}
 	

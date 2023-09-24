@@ -26,6 +26,7 @@ public class Studios extends SoloSettings_AbstractComponents{
 	
 	public WebElement studioName()
 	{
+		waitForVisibilityOfElement(studioName);
 		waitForElementToBeClickable(studioName);
 		return studioName;
 	}

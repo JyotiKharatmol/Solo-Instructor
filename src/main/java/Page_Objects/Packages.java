@@ -44,6 +44,7 @@ public class Packages extends SoloSettings_AbstractComponents
 	
 	public WebElement clientType_continue()
 	{
+		waitForVisibilityOfElement(clientType_continue);
 		waitForElementToBeClickable(clientType_continue);
 		return clientType_continue;
 	}
@@ -58,11 +59,11 @@ public class Packages extends SoloSettings_AbstractComponents
 	}
 	
 	@FindBy(xpath="//div[@inputmode='numeric']/div/input")
-	WebElement enterNumberOfSessions;
+	WebElement enterNumberOfSessionsForSessionPack;
 	
-	public WebElement enterNumberOfSessions()
+	public WebElement enterNumberOfSessionsForSessionPack()
 	{
-		return enterNumberOfSessions;
+		return enterNumberOfSessionsForSessionPack;
 	}
 	
 	@FindBy(css="div[id*='select-timeSlot']")
@@ -74,20 +75,20 @@ public class Packages extends SoloSettings_AbstractComponents
 	}
 	
 	@FindBy(css="ul li:nth-child(1)")
-	WebElement selectTimes_anyTime;
+	WebElement selectTimesForSessionPack_anyTime;
 	
-	public WebElement selectTimes_anyTime()
+	public WebElement selectTimesForSessionPack_anyTime()
 	{
-		waitForElementToBeClickable(selectTimes_anyTime);
-		return selectTimes_anyTime;
+		waitForElementToBeClickable(selectTimesForSessionPack_anyTime);
+		return selectTimesForSessionPack_anyTime;
 	}
 	
 	@FindBy(xpath="//div[@role='radiogroup']/label[2]/span[1]/span[1]")
-	WebElement selectNoPurchaseLimit;
+	WebElement selectNoPurchaseLimitForSessionPack;
 	
-	public WebElement selectNoPurchaseLimit()
+	public WebElement selectNoPurchaseLimitForSessionPack()
 	{
-		return selectNoPurchaseLimit;
+		return selectNoPurchaseLimitForSessionPack;
 	}
 	
 	@FindBy(xpath="//span[text()='CONTINUE']")
@@ -167,6 +168,137 @@ public class Packages extends SoloSettings_AbstractComponents
 	{
 		waitForElementToBeClickable(sessionPack_copy);
 		return sessionPack_copy;
+	}
+	
+	@FindBy(xpath="//span[text()='+ CREATE MEMBERSHIP']")
+	WebElement createMembership;
+	
+	public WebElement createMembership()
+	{
+		waitForVisibilityOfElement(createMembership);
+		return createMembership;
+	}
+	
+	@FindBy(css="input[name='membershipName']")
+	WebElement enterNameOfMemPack;
+	
+	public WebElement enterNameOfMemPack()
+	{
+		return enterNameOfMemPack;
+	}
+	
+	@FindBy(css="div[id='mui-component-select-length']")
+	WebElement selectLengthOfMemPack;
+	
+	public WebElement selectLengthOfMemPack()
+	{
+		return selectLengthOfMemPack;
+	}
+	
+	@FindBy(css="ul li:nth-child(4)")
+	WebElement selectLength12Month;
+	
+	public WebElement selectLength12Month()
+	{
+		return selectLength12Month;
+	}
+	
+	@FindBy(css="input[name='clientCanAttend']")
+	WebElement enterNumberOfSessionsForMemPack;
+	
+	public WebElement enterNumberOfSessionsForMemPack()
+	{
+		return enterNumberOfSessionsForMemPack;
+	}
+	
+	@FindBy(css="div[id='mui-component-select-timePeriod']")
+	WebElement selectSessionsTimePeriod;
+	
+	public WebElement selectSessionsTimePeriod()
+	{
+		return selectSessionsTimePeriod;
+	}
+	
+	@FindBy(css="ul li:nth-child(2)")
+	WebElement selectSessionsTimePeriodMonthly;
+	
+	public WebElement selectSessionsTimePeriodMonthly()
+	{
+		return selectSessionsTimePeriodMonthly;
+	}
+	
+	@FindBy(css="ul li:nth-child(3)")
+	WebElement selectTimesForMemPack_anyTime;
+	
+	public WebElement selectTimesForMemPack_anyTime()
+	{
+		return selectTimesForMemPack_anyTime;
+	}
+	
+	@FindBy(xpath="//div[@aria-label='purchase-limit']/label[2]/span[1]/span[1]")
+	WebElement selectNoPurchaseLimitForMemPack;
+	
+	public WebElement selectNoPurchaseLimitForMemPack()
+	{
+		return selectNoPurchaseLimitForMemPack;
+	}
+	
+	@FindBy(xpath="//div[@aria-label='allow-rollover']/label[1]/span[1]/span[1]")
+	WebElement allowRolloverOfUnusedSessions;
+	
+	public WebElement allowRolloverOfUnusedSessions()
+	{
+		return allowRolloverOfUnusedSessions;
+	}
+	
+	@FindBy(css="div[id*='select-chargeTimePeriod']")
+	WebElement selectPackageChargeTimePeriod;
+	
+	public WebElement selectPackageChargeTimePeriod()
+	{
+		return selectPackageChargeTimePeriod;
+	}
+	
+	@FindBy(css="ul li:nth-child(2)")
+	WebElement selectMonthlyPackageChargeTimePeriod;
+	
+	public WebElement selectMonthlyPackageChargeTimePeriod()
+	{
+		return selectMonthlyPackageChargeTimePeriod;
+	}
+	
+	@FindBy(css="div[id*='select-chargeEvent']")
+	WebElement selectPackageChargeFromEvent;
+	
+	public WebElement selectPackageChargeFromEvent()
+	{
+		return selectPackageChargeFromEvent;
+	}
+	
+	@FindBy(css="ul li:nth-child(1)")
+	WebElement selectPackageChargeFromEventDateOfPurchase;
+	
+	public WebElement selectPackageChargeFromEventDateOfPurchase()
+	{
+		return selectPackageChargeFromEventDateOfPurchase;
+	}
+	
+	@FindBy(css="a[href*='membership/copy'] img")
+	WebElement copyMemPack;
+	
+	public WebElement copyMemPack()
+	{
+		waitForVisibilityOfElement(copyMemPack);
+		return copyMemPack;
+	}
+	
+	@FindBy(css="ul li")
+	WebElement clientCanAttendUnlimitedSessions;
+	
+	public WebElement clientCanAttendUnlimitedSessions()
+	{
+		waitForVisibilityOfElement(clientCanAttendUnlimitedSessions);
+		return clientCanAttendUnlimitedSessions;
 	}
 	
 	@FindBy(xpath="//span[text()='PREVIOUS STEP']")

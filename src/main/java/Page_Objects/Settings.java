@@ -79,7 +79,7 @@ public class Settings extends Solo_AbstractComponents
 		return packagesBox;
 	}
 	
-	@FindBy(css="a[href='#/fit/solo-instructor/app/settings/promoCodes'] div")
+	@FindBy(linkText="Promo-Codes")
 	WebElement promoCodesBox;
 	
 	public WebElement PromoCodesBox()

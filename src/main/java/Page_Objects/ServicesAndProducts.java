@@ -32,8 +32,8 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 	
 	public WebElement enterServiceOrProduct()
 	{
+		waitForVisibilityOfElement(enterServiceOrProduct);
 		waitForElementToBeClickable(enterServiceOrProduct);
-		
 		return enterServiceOrProduct;
 	}
 

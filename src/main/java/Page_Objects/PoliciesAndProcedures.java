@@ -18,6 +18,7 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 	
 	public WebElement uploadPolicies_browse()
 	{
+		waitForVisibilityOfElement(uploadPolicies_browse);
 		return uploadPolicies_browse;
 	}
 	
