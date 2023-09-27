@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PeakOrNonPeakHours extends Solo_AbstractComponents
+public class PeakOrNonPeakHours extends SoloSettings_AbstractComponents
 {
 
 	WebDriver driver;
@@ -16,12 +16,24 @@ public class PeakOrNonPeakHours extends Solo_AbstractComponents
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement peakOrNonPeakHours_title;
 	
-	@FindBy(xpath="//label[2]/span[1]/span[1]")
+	public WebElement peakOrNonPeakHours_title()
+	{
+		waitForVisibilityOfElement(peakOrNonPeakHours_title);
+		return peakOrNonPeakHours_title;
+	}
+	
+	@FindBy(css="div[role='radiogroup'] label:nth-child(1) span:nth-child(1) span:nth-child(1)")
+	WebElement peakOrNonPeakHours_Yes;	
+		
+	@FindBy(css="div[role='radiogroup'] label:nth-child(2) span:nth-child(1) span:nth-child(1)")
 	WebElement peakOrNonPeakHours_No;
 	
 	public WebElement peakOrNonPeakHours_No()
 	{
+		waitForVisibilityOfElement(peakOrNonPeakHours_Yes);
 		return peakOrNonPeakHours_No;
 	}
 	
@@ -46,7 +58,7 @@ public class PeakOrNonPeakHours extends Solo_AbstractComponents
 
 	public WebElement peakOrNonPeakHours_saveAndContinue()
 	{
-		waitForVisibilityOfElement(peakOrNonPeakHours_saveAndContinue);
+		waitForElementToBeClickable(peakOrNonPeakHours_saveAndContinue);
 		return peakOrNonPeakHours_saveAndContinue;
 	}
 	

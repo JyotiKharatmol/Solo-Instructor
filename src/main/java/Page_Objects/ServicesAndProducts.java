@@ -31,8 +31,8 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 	WebElement enterServiceOrProduct;
 	
 	public WebElement enterServiceOrProduct()
-	{
-		waitForVisibilityOfElement(enterServiceOrProduct);
+	{	
+		waitForVisibilityOfElement(addCategory);
 		waitForElementToBeClickable(enterServiceOrProduct);
 		return enterServiceOrProduct;
 	}
@@ -45,6 +45,14 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 		return addCategory;
 	}
 	
+	@FindBy(css="div[class*='grid'] p")
+	WebElement firstServiceAndProductCategory;
+	
+	public WebElement firstServiceAndProductCategory()
+	{
+		return firstServiceAndProductCategory;
+	}
+	
 	@FindBy(css="p[class*='Mui-error']")
 	WebElement servicesAndProducts_ErrorMessage;
 	
@@ -53,7 +61,7 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 		return servicesAndProducts_ErrorMessage;
 	}
 	
-	@FindBy(xpath="//form/div/div[3]/div/div/div[1]/div/div/div/button")
+	@FindBy(css="button[aria-label='delete']")
 	WebElement servicesAndProducts_deleteButton;
 	
 	public WebElement servicesAndProducts_deleteButton()
@@ -77,11 +85,22 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 		return servicesAndProducts_saveForLater;
 	}
 	
+	@FindBy(css="button[class*='disabled']")
+	WebElement servicesAndProducts_saveAndContinueDisabled;
+	
+	public WebElement servicesAndProducts_saveAndContinueDisabled()
+	{
+		return servicesAndProducts_saveAndContinueDisabled;
+	}
+	
 	@FindBy(xpath="//span[text()='SAVE AND CONTINUE']")
 	WebElement servicesAndProducts_saveAndContinue;
 
 	public WebElement servicesAndProducts_saveAndContinue()
 	{
+		
+		waitForVisibilityOfElement(servicesAndProducts_deleteButton);
+		waitForElementToBeClickable(servicesAndProducts_saveAndContinue);
 		return servicesAndProducts_saveAndContinue;
 	}	
 }

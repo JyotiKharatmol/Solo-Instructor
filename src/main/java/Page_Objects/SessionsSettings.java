@@ -26,6 +26,7 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 	
 	public WebElement enterSessionType()
 	{
+		waitForVisibilityOfElement(addSessionType);
 		waitForElementToBeClickable(enterSessionType);
 		return enterSessionType;
 	}
@@ -46,7 +47,7 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 		return enterSession_ErrorMessage;
 	}
 	
-	@FindBy(xpath="//form/div/div[3]/div/div[1]/div/div/div[1]/button")
+	@FindBy(css="button[aria-label='delete']")
 	WebElement sessionDelete;
 	
 	public WebElement sessionDelete()
@@ -70,11 +71,20 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 		return sessionSettings_SaveForLater;
 	}
 	
+	@FindBy(css="button[class*='disabled']")
+	WebElement sessionSettings_saveAndContinueDisabled;
+	
+	public WebElement sessionSettings_saveAndContinueDisabled()
+	{
+		return sessionSettings_saveAndContinueDisabled;
+	}
+	
 	@FindBy(xpath="//span[text()='SAVE AND CONTINUE']")
 	WebElement sessionSettings_SaveAndContinue;
 
 	public WebElement sessionSettings_SaveAndContinue()
 	{
+		waitForVisibilityOfElement(sessionDelete);
 		waitForElementToBeClickable(sessionSettings_SaveAndContinue);
 		return sessionSettings_SaveAndContinue;
 	}

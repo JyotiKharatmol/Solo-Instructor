@@ -14,6 +14,15 @@ public class Packages extends SoloSettings_AbstractComponents
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement packages_title;
+	
+	public WebElement packages_title()
+	{
+		waitForVisibilityOfElement(packages_title);
+		return packages_title;
+	}
+	
 	@FindBy(xpath="//span[text()='+ CREATE SESSION PACK']")
 	WebElement createSessionPack;
 	

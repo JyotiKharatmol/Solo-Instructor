@@ -13,6 +13,16 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 		super(driver);
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement policies_title;
+	
+	public WebElement policies_title()
+	{
+		waitForVisibilityOfElement(policies_title);
+		return policies_title;
+	}
+	
 	@FindBy(css="div[class='dropzone'] div button")
 	WebElement uploadPolicies_browse;
 	
@@ -22,21 +32,17 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 		return uploadPolicies_browse;
 	}
 	
+	@FindBy(css="div[class*='MuiFormControl'] div span[class*='MuiTypography-root']")
+	WebElement uploadedPoliciesFile;
+	
 	@FindBy(css="input[type='text']")
-	WebElement enterPoliciesTerm;
+	WebElement enterPoliciesTerm1;
 	
-
-	public WebElement enterPoliciesTerm()
-	{
-		return enterPoliciesTerm;
-	}
-	
-	@FindBy(css="button[aria-label='edit']")
-	WebElement edit1stPoliciesTerm;
-	
-	public WebElement edit1stPoliciesTerm()
-	{
-		return edit1stPoliciesTerm;
+	public WebElement enterPoliciesTerm1()
+	{	
+		waitForVisibilityOfElement(uploadedPoliciesFile);
+		waitForElementToBeClickable(enterPoliciesTerm1);
+		return enterPoliciesTerm1;
 	}
 	
 	@FindBy(xpath="//span[text()='+ ADD Term & Conditions']")
@@ -47,13 +53,22 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 		return addPoliciesTerm;
 	}
 	
-	@FindBy(xpath="//form/div/div[5]/div/div/div[2]/div[2]/div[2]/button")
-	WebElement cancelPoliciesTerm;
+	@FindBy(xpath="//div[@class='MuiGrid-root MuiGrid-container']/div/div/div/p")
+	WebElement policiesTerm1;
 	
-
-	public WebElement cancelPoliciesTerm()
+	public WebElement enterPoliciesTerm2()
 	{
-		return cancelPoliciesTerm;
+		waitForVisibilityOfElement(policiesTerm1);
+		waitForElementToBeClickable(enterPoliciesTerm1);
+		return enterPoliciesTerm1;
+	}
+	
+	@FindBy(css="button[aria-label='edit']")
+	WebElement edit1stPoliciesTerm;
+	
+	public WebElement edit1stPoliciesTerm()
+	{
+		return edit1stPoliciesTerm;
 	}
 	
 	@FindBy(xpath="//form/div/div[5]/div/div/div[1]/div/div/div/button[2]")
@@ -62,6 +77,15 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 	public WebElement delete1stPoliciesTerm()
 	{
 		return delete1stPoliciesTerm;
+	}
+	
+	@FindBy(xpath="//form/div/div[5]/div/div/div[2]/div[2]/div[2]/button")
+	WebElement cancelPoliciesTerm;
+	
+
+	public WebElement cancelPoliciesTerm()
+	{
+		return cancelPoliciesTerm;
 	}
 	
 	@FindBy(xpath="//span[text()='PREVIOUS STEP']")
@@ -85,6 +109,7 @@ public class PoliciesAndProcedures extends SoloSettings_AbstractComponents{
 	
 	public WebElement policies_saveAndContinue()
 	{
+		waitForVisibilityOfElements(policiesTerm1);
 		waitForElementToBeClickable(policies_saveAndContinue);
 		return policies_saveAndContinue;
 	}

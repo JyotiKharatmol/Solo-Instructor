@@ -109,21 +109,33 @@ public class SoloSettings_AbstractComponents extends Solo_AbstractComponents
 	
 	public void waitForElementToBeClickable(WebElement a)
 	{
-		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(60));
-		w.until(ExpectedConditions.elementToBeClickable(a));	
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(50));
+		w.until(ExpectedConditions.elementToBeClickable(a));
 	}
 	
 	public void waitForAttributeOfElement(WebElement a, String b, String c)
 	{
-		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(40));
 		w.until(ExpectedConditions.attributeToBe(a, b, c));
 	}
 	
 	public void waitForVisibilityOfElement(WebElement a)
 	{
-		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(60));
-		w.until(ExpectedConditions.visibilityOf(a));
-				
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(100));
+		w.until(ExpectedConditions.visibilityOf(a));			
 	}
+	
+	public void waitForVisibilityOfElements(WebElement a)
+	{
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(50));
+		w.until(ExpectedConditions.visibilityOfAllElements(a));		
+	}
+	
+	public void waitForURLToContain(String a)
+	{
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(100));
+		w.until(ExpectedConditions.urlContains(a));
+	}
+
 	
 }

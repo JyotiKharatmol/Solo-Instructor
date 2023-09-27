@@ -13,12 +13,32 @@ public class Studios extends SoloSettings_AbstractComponents{
 		super(driver);
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement studios_title;
+	
+	public WebElement studios_title()
+	{
+		waitForVisibilityOfElement(studios_title);
+		return studios_title;
+	}
+	
 	@FindBy(xpath="//span[text()='+ ADD NEW STUDIOS']")
 	WebElement addStudios;
 	
 	public WebElement addStudios()
 	{
+		waitForVisibilityOfElement(addStudios);
 		return addStudios;
+	}
+	
+	@FindBy(css="h2 span[class*='body1']")
+	WebElement addStudioModal_title;
+	
+	public WebElement addStudioModal_title()
+	{
+	 waitForVisibilityOfElement(addStudioModal_title);
+	 return addStudioModal_title;	
 	}
 	
 	@FindBy(css="input[name='name']")
@@ -26,7 +46,6 @@ public class Studios extends SoloSettings_AbstractComponents{
 	
 	public WebElement studioName()
 	{
-		waitForVisibilityOfElement(studioName);
 		waitForElementToBeClickable(studioName);
 		return studioName;
 	}
@@ -55,12 +74,26 @@ public class Studios extends SoloSettings_AbstractComponents{
 		return studioCancellationNotAllowed;
 	}
 	
+	@FindBy(css="input[value='0']")
+	WebElement studioCancellationNotAllowedIs0;
+	
 	@FindBy(xpath="//span[text()='SAVE ']")
 	WebElement saveStudio;
 	
 	public WebElement saveStudio()
 	{
+		waitForVisibilityOfElement(studioCancellationNotAllowedIs0);
+		waitForElementToBeClickable(saveStudio);
 		return saveStudio;
+	}
+	
+	@FindBy(css="div h5")
+	WebElement newlyCreatedStudio;
+	
+	public WebElement newlyCreatedStudio()
+	{
+		waitForVisibilityOfElement(newlyCreatedStudio);
+		return newlyCreatedStudio;
 	}
 	
 	@FindBy(xpath="//div/div/div/div[3]/div/div/div[1]/div[2]/button")

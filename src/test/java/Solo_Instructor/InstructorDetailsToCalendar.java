@@ -1,6 +1,7 @@
 package Solo_Instructor;
 import java.io.IOException;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -17,6 +18,7 @@ import Page_Objects.PromoCodes;
 import Page_Objects.ServicesAndProducts;
 import Page_Objects.SessionsSettings;
 import Page_Objects.Settings;
+import Page_Objects.SoloSettings_AbstractComponents;
 import Page_Objects.Studios;
 import Resource_Properties.Base_File;
 
@@ -31,84 +33,101 @@ public class InstructorDetailsToCalendar extends Base_File
 	}
 	
 	@Test
-	public void InstructorOnBoardingSettings() throws InterruptedException, IOException
+	public void InstructorSettings() throws InterruptedException, IOException
 	{
 		Login l = new Login(driver);
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
-		l.password().sendKeys("+*9^<vbE");
+		l.password().sendKeys("Ly>a@+!r");
 		l.loginButton().click();
+
 		InstructorDetails i = new InstructorDetails(driver);
 		i.instructorDetails_saveAndContinue().click(); 
-		Thread.sleep(15000);
+		
 		ServicesAndProducts s = new ServicesAndProducts(driver);
 		s.enterServiceOrProduct().sendKeys("Nutrition Consultations");
 		s.addCategory().click();
 		s.servicesAndProducts_saveAndContinue().click();
-		Thread.sleep(15000);
+		
 		SessionsSettings se = new SessionsSettings(driver);
 		se.enterSessionType().sendKeys("Yoga");
 		se.addSessionType().click();
-		se.sessionSettings_SaveAndContinue().click();
-		Thread.sleep(15000);
+		se.sessionSettings_SaveAndContinue().click();		
 		PeakOrNonPeakHours p = new PeakOrNonPeakHours(driver);
 		p.peakOrNonPeakHours_No().click();
 		p.peakOrNonPeakHours_saveAndContinue().click();
-		Thread.sleep(15000);
+		
 		ClientWaiver c = new ClientWaiver(driver);
+		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
+		solo.waitForVisibilityOfElement(c.clientWaiver_title());
+		Assert.assertEquals(c.clientWaiver_title().getText(), "Client Waiver");
 		c.uploadWaiver_browse().click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\fileUpload.exe");
-		c.enterWaiverTerm().sendKeys("Each member who is age 13 and older will receive a membership card. This card is required to enter the facility. You must scan your card at the Front Desk each time you enter the facility.");
+		c.enterWaiverTerm1().sendKeys("Each member who is age 13 and older will receive a membership card. This card is required to enter the facility. You must scan your card at the Front Desk each time you enter the facility.");
 		c.addWaiverTerm().click();
-		c.enterWaiverTerm().sendKeys("All members will have a picture image on file to verify their identities. Members under the age of 13 must be accompanied by an adult and must be checked in at the Front Desk by giving their name.");
+		c.enterWaiverTerm2().sendKeys("All members will have a picture image on file to verify their identities. Members under the age of 13 must be accompanied by an adult and must be checked in at the Front Desk by giving their name.");
 		c.addWaiverTerm().click();
 		c.waiverSaveAndContinue().click();
-		Thread.sleep(15000);
+
 		PoliciesAndProcedures p1 = new PoliciesAndProcedures(driver);
+		solo.waitForURLToContain("contractTerms");
+		Assert.assertEquals(p1.policies_title().getText(), "Policies & Procedures");
 		p1.uploadPolicies_browse().click();
-		Thread.sleep(5000);
-		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\fileUpload.exe");
-		p1.enterPoliciesTerm().sendKeys("It is the policy of the Office of Wellness Services and the Fitness Center to promote health and wellness while encouraging members to engage in safe conduct while participating in Wellness Services activities and events and while utilizing recreational facilities.");
+		Thread.sleep(3000);
+		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\policiesFileUpload.exe");
+		p1.enterPoliciesTerm1().sendKeys("It is the policy of the Office of Wellness Services and the Fitness Center to promote health and wellness while encouraging members to engage in safe conduct while participating in Wellness Services activities and events and while utilizing recreational facilities.");
 		p1.addPoliciesTerm().click();
-		p1.enterPoliciesTerm().sendKeys("Accordingly, in addition to encouraging members to use good judgment, the Office of Wellness Services has adopted this policy and authorized the Fitness Center to approve rules designed to encourage safe behavior on the part of current members of the Fitness Center.");
+		p1.enterPoliciesTerm2().sendKeys("Accordingly, in addition to encouraging members to use good judgment, the Office of Wellness Services has adopted this policy and authorized the Fitness Center to approve rules designed to encourage safe behavior on the part of current members of the Fitness Center.");
 		p1.addPoliciesTerm().click();
 		p1.policies_saveAndContinue().click();
-		Thread.sleep(15000);
+		
 		Studios s1 = new Studios(driver);
+		solo.waitForURLToContain("studios");
+		Assert.assertEquals(s1.studios_title().getText(), "Create Your Studios");
 		s1.addStudios().click();
-		s1.studioName().sendKeys("Studio 790");
+		Assert.assertEquals(s1.addStudioModal_title().getText(), "Studio Details");
+		s1.studioName().sendKeys("Studio Fitness");
 		s1.studioEmail().sendKeys("jyoti.kharatmol@azularc.com");
 		s1.studioPhoneNo().sendKeys("5949395932");
 		s1.studioCancellationNotAllowed().sendKeys("0");
 		s1.saveStudio().click();
-		Thread.sleep(5000);
+		Assert.assertEquals(s1.newlyCreatedStudio().getText(), "Studio Fitness");
 		s1.studios_saveAndContinue().click();
+		
 		Packages pa = new Packages(driver);
+		solo.waitForURLToContain("packages");
+		Assert.assertEquals(pa.packages_title().getText(), "Create Packages");
 		pa.createSessionPack().click();
+		
 		pa.clientType_newClients().click();
 		pa.clientType_introClients().click();
 		pa.clientType_continue().click();
+		
 		pa.enterNameOfSessionPack().sendKeys("Free Yoga Trail Session Pack");
 		pa.enterNumberOfSessionsForSessionPack().sendKeys("15");
 		pa.selectTimes().click();
 		pa.selectTimesForSessionPack_anyTime().click();
 		pa.selectNoPurchaseLimitForSessionPack().click();
-		Thread.sleep(2000);
 		pa.sessionPackDetails_continue().click();
+		
 		pa.priceOfSessionPack().sendKeys("0");
 		pa.selectPackageExpiry().click();
 		pa.selectPackageExpiry_1yr().click();
 		pa.selectFromEvent().click();
 		pa.selectFromEvent_dateOfPurchase().click();
 		pa.pricing_continue().click();
+		
 		pa.confirmation_continue().click();
+		
 		pa.sessionPack_copy().click();
-		Thread.sleep(5000);
+		
 		pa.clientType_continue().click();
+		
 		pa.enterNameOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"Yoga Session Pack");
 		pa.enterNumberOfSessionsForSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"50");
 		Thread.sleep(2000);
 		pa.sessionPackDetails_continue().click();
+		
 		pa.priceOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1");
 		pa.pricing_continue().click();
 		pa.confirmation_continue().click();
@@ -135,7 +154,6 @@ public class InstructorDetailsToCalendar extends Base_File
 		pa.pricing_continue().click();
 		pa.confirmation_continue().click();
 		pa.copyMemPack().click();
-		Thread.sleep(5000);
 		pa.clientType_continue().click();
 		pa.enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1 Year Unlimited Membership Package");
 		pa.enterNumberOfSessionsForMemPack().click();
@@ -147,7 +165,6 @@ public class InstructorDetailsToCalendar extends Base_File
 		Settings set = new Settings(driver);
 		set.PromoCodesBox().click();
 		PromoCodes pro = new PromoCodes(driver);
-		Thread.sleep(2000);
 		pro.promoCodes_skip().click();
 		FitnessSessionTemplates f = new FitnessSessionTemplates(driver);
 		f.addFitnessSession().click();
@@ -162,10 +179,8 @@ public class InstructorDetailsToCalendar extends Base_File
 		f.selectServices().click();
 		f.selectServices_nutrition().click();
 		f.saveFitnessSession().click();
-		Thread.sleep(2000);
 		f.fitnessSession_saveAndContinue().click();
 		EmailSettings e = new EmailSettings(driver);
-		Thread.sleep(2000);
 		e.enterEmail().sendKeys("jyoti.kharatmol@azularc.com");
 		e.emailSettings_saveAndContinue().click();
 		Calendar cal = new Calendar(driver);
@@ -185,7 +200,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		cal.repeatDays_sat().click();
 		cal.recurringSession_untilDate().sendKeys("03092026");
 		cal.save_recurringSessionModal().click();
-		cal.saveSession().click();		
+		cal.saveSession().click();	
 	}
 	
 	

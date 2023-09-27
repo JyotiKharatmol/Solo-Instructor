@@ -5,7 +5,7 @@
     <classes>
       <class name="Solo_Instructor.InstructorDetailsToCalendar">
         <methods>
-          <include name="InstructorOnBoardingSettings"/>
+          <include name="InstructorSettings"/>
           <include name="tearDown"/>
           <include name="initialize"/>
         </methods>
