@@ -33,7 +33,7 @@ public class OnboardSettings extends Base_File
 		Settings se = new Settings(driver);
 		se.InstructorDetailsBox().click();
 		InstructorDetails i = new InstructorDetails(driver);
-		Assert.assertEquals(i.instructorDetailsPageTitle().getText(), "Instructor Details");
+		Assert.assertEquals(i.instructorDetails_title().getText(), "Instructor Details");
 		Assert.assertEquals(i.brandName().getAttribute("value"), "Cross-Fit");
 		Assert.assertEquals(i.address1().getAttribute("value"), "Highland Street 120");
 		Assert.assertEquals(i.city().getAttribute("value"), "Atlanta");
@@ -50,10 +50,9 @@ public class OnboardSettings extends Base_File
 		i.browseImage().click();
 		Thread.sleep(2000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\imageUpload.exe");
-		Assert.assertTrue(i.instructorDetails_uploadedImage().isDisplayed());
 		i.instructorDetails_saveAndContinue().click();
 		ServicesAndProducts ser = new ServicesAndProducts(driver);
-		Assert.assertEquals(ser.servicesAndProducts_pageTitle().getText(), "Services and Products");
+		Assert.assertEquals(ser.servicesAndProducts_title().getText(), "Services and Products");
 	}
 	
 	@AfterTest

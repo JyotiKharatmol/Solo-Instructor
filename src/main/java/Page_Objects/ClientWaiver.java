@@ -19,6 +19,7 @@ public class ClientWaiver extends SoloSettings_AbstractComponents
 	
 	public WebElement clientWaiver_title()
 	{
+		waitForVisibilityOfElement(clientWaiver_title);
 		return clientWaiver_title;
 	}
 	

@@ -13,19 +13,24 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 		super(driver);
 		PageFactory.initElements(driver, this);
 	}
-	@FindBy(css="form div div div h2")
-	WebElement sessionSettings_pageTitle;
+	@FindBy(css="div[class*='center'] h2")
+	WebElement sessionSettings_title;
 	
-	public WebElement sessionSettings_pageTitle()
+	public WebElement sessionSettings_title()
 	{
-		return sessionSettings_pageTitle;
+		waitForVisibilityOfElement(sessionSettings_title);
+		return sessionSettings_title;
 	}
+	
+	@FindBy(css="div[class*='center']")
+	WebElement sessionSettings_elements;
 	
 	@FindBy(css="div input[type='text']")
 	WebElement enterSessionType;
 	
 	public WebElement enterSessionType()
 	{
+		waitForVisibilityOfElements(sessionSettings_elements);
 		waitForVisibilityOfElement(addSessionType);
 		waitForElementToBeClickable(enterSessionType);
 		return enterSessionType;
@@ -37,6 +42,15 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 	public WebElement addSessionType()
 	{
 		return addSessionType;
+	}
+	
+	@FindBy(css="div[class*='grid'] p")
+	WebElement newSessionAdded;
+	
+	public WebElement newSessionAdded()
+	{
+		waitForVisibilityOfElement(newSessionAdded);
+		return newSessionAdded;
 	}
 	
 	@FindBy(css="p[class*='Mui-error']")
@@ -84,7 +98,6 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 
 	public WebElement sessionSettings_SaveAndContinue()
 	{
-		waitForVisibilityOfElement(sessionDelete);
 		waitForElementToBeClickable(sessionSettings_SaveAndContinue);
 		return sessionSettings_SaveAndContinue;
 	}

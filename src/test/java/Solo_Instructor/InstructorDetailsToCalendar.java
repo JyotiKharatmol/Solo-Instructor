@@ -37,29 +37,45 @@ public class InstructorDetailsToCalendar extends Base_File
 	{
 		Login l = new Login(driver);
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
-		l.password().sendKeys("Ly>a@+!r");
+		l.password().sendKeys("1&n-Pm*N");
 		l.loginButton().click();
-
+		
 		InstructorDetails i = new InstructorDetails(driver);
-		i.instructorDetails_saveAndContinue().click(); 
+		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
+		solo.waitForURLToContain("companyDetails");
+		Assert.assertEquals(i.instructorDetails_title().getText(), "Instructor Details");
+		i.browseImage().click();
+		Thread.sleep(3000);
+		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\imageUpload.exe");
+		i.instructorDetails_saveAndContinue().click(); 	
 		
 		ServicesAndProducts s = new ServicesAndProducts(driver);
+		solo.waitForURLToContain("reportSettings");
+		Assert.assertEquals(s.servicesAndProducts_title().getText(), "Services and Products");
 		s.enterServiceOrProduct().sendKeys("Nutrition Consultations");
 		s.addCategory().click();
+		Assert.assertEquals(s.serviceAndProducts_1stcategory().getText(), "Nutrition Consultations");
 		s.servicesAndProducts_saveAndContinue().click();
 		
 		SessionsSettings se = new SessionsSettings(driver);
+		solo.waitForURLToContain("classesSettings");
+		Assert.assertEquals(se.sessionSettings_title().getText(), "Sessions Settings");
 		se.enterSessionType().sendKeys("Yoga");
 		se.addSessionType().click();
+		Assert.assertEquals(se.newSessionAdded().getText(), "Yoga");
 		se.sessionSettings_SaveAndContinue().click();		
+		
 		PeakOrNonPeakHours p = new PeakOrNonPeakHours(driver);
+		solo.waitForURLToContain("hours");
+		Assert.assertEquals(p.peakOrNonPeakHours_title().getText(), "Peak / Non-Peak Settings");
 		p.peakOrNonPeakHours_No().click();
+		Assert.assertTrue(p.peakOrNonPeakHours_No().isSelected());
 		p.peakOrNonPeakHours_saveAndContinue().click();
 		
 		ClientWaiver c = new ClientWaiver(driver);
-		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
-		solo.waitForVisibilityOfElement(c.clientWaiver_title());
+		solo.waitForURLToContain("clientWaiver");
 		Assert.assertEquals(c.clientWaiver_title().getText(), "Client Waiver");
+		
 		c.uploadWaiver_browse().click();
 		Thread.sleep(3000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\fileUpload.exe");
@@ -201,6 +217,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		cal.recurringSession_untilDate().sendKeys("03092026");
 		cal.save_recurringSessionModal().click();
 		cal.saveSession().click();	
+		
 	}
 	
 	

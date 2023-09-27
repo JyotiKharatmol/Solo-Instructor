@@ -14,13 +14,13 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//form/div/div/div/h2")
-	WebElement instructorDetailsPageTitle;
+	@FindBy(css="div[class*='center'] h2")
+	WebElement instructorDetails_title;
 	
-	public WebElement instructorDetailsPageTitle()
+	public WebElement instructorDetails_title()
 	{
-		waitForVisibilityOfElement(instructorDetailsPageTitle);
-		return instructorDetailsPageTitle;
+		waitForVisibilityOfElement(instructorDetails_title);
+		return instructorDetails_title;
 	}
 	
 	@FindBy(css="input[name='name']")
@@ -176,14 +176,6 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 		return merchantUsername;
 	}
 	
-	@FindBy(css="button[aria-label*='password visibility'] span:nth-child(1)")
-	WebElement togglePasswordVisibilityIcon;
-	
-	public WebElement togglePasswordVisibilityIcon()
-	{
-		return togglePasswordVisibilityIcon;
-	}
-	
 	@FindBy(css="input[name='merchantPassword']")
 	WebElement merchantPassword;
 	
@@ -192,22 +184,25 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 		return merchantPassword;
 	}
 	
+	@FindBy(css="button[aria-label*='password visibility'] span:nth-child(1)")
+	WebElement togglePasswordVisibilityIcon;
+	
+	public WebElement togglePasswordVisibilityIcon()
+	{
+		return togglePasswordVisibilityIcon;
+	}
+	
 	@FindBy(css="div[class='dropzone'] div button")
 	WebElement browseImage;
 	
 	public WebElement browseImage()
 	{
+		waitForVisibilityOfElement(browseImage);
 		return browseImage;
 	}
 	
 	@FindBy(css="img[alt='thumbnail']")
 	WebElement instructorDetails_uploadedImage;
-	
-	public WebElement instructorDetails_uploadedImage()
-	{
-		waitForVisibilityOfElement(instructorDetails_uploadedImage);
-		return instructorDetails_uploadedImage;
-	}
 	
 	@FindBy(xpath="//span[text()='CHANGE PASSWORD']")
 	WebElement changePassword;
@@ -270,6 +265,8 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 	
 	public WebElement instructorDetails_saveAndContinue()
 	{
+		waitForVisibilityOfElement(instructorDetails_uploadedImage);
+		waitForElementToBeClickable(instructorDetails_saveAndContinue);
 		return instructorDetails_saveAndContinue;
 	}
 	

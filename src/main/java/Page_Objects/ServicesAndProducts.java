@@ -15,23 +15,24 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css="form div div div h2")
-	WebElement servicesAndProducts_pageTitle;
+	@FindBy(css="div[class*='center'] h2")
+	WebElement servicesAndProducts_title;
 	
-	public WebElement servicesAndProducts_pageTitle()
+	public WebElement servicesAndProducts_title()
 	{
-		waitForAttributeOfElement(servicesAndProductsToolTip,"aria-label","If you offer Group Classes, 1:1 Personal Training, provide Nutrition Consultations, or Apparel, enter those here");
-		return servicesAndProducts_pageTitle;
+		waitForVisibilityOfElement(servicesAndProducts_title);
+		return servicesAndProducts_title;
 	}
-	
-	@FindBy(css="svg[aria-label*='Group Classes']")
-	WebElement servicesAndProductsToolTip;
+
+	@FindBy(css="div[class*='center']")
+	WebElement servicesAndProducts_elements;
 	
 	@FindBy(css="input[type='text']")
 	WebElement enterServiceOrProduct;
 	
 	public WebElement enterServiceOrProduct()
 	{	
+		waitForVisibilityOfElements(servicesAndProducts_elements);
 		waitForVisibilityOfElement(addCategory);
 		waitForElementToBeClickable(enterServiceOrProduct);
 		return enterServiceOrProduct;
@@ -46,11 +47,12 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 	}
 	
 	@FindBy(css="div[class*='grid'] p")
-	WebElement firstServiceAndProductCategory;
+	WebElement serviceAndProducts_1stcategory;
 	
-	public WebElement firstServiceAndProductCategory()
+	public WebElement serviceAndProducts_1stcategory()
 	{
-		return firstServiceAndProductCategory;
+		waitForVisibilityOfElement(serviceAndProducts_1stcategory);
+		return serviceAndProducts_1stcategory;
 	}
 	
 	@FindBy(css="p[class*='Mui-error']")
@@ -98,8 +100,6 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 
 	public WebElement servicesAndProducts_saveAndContinue()
 	{
-		
-		waitForVisibilityOfElement(servicesAndProducts_deleteButton);
 		waitForElementToBeClickable(servicesAndProducts_saveAndContinue);
 		return servicesAndProducts_saveAndContinue;
 	}	
