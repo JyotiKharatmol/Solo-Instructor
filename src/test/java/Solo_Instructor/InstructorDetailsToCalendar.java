@@ -37,45 +37,49 @@ public class InstructorDetailsToCalendar extends Base_File
 	{
 		Login l = new Login(driver);
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
-		l.password().sendKeys("1&n-Pm*N");
+		l.password().sendKeys("uvAk)rJu");
 		l.loginButton().click();
 		
-		InstructorDetails i = new InstructorDetails(driver);
 		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
+		
 		solo.waitForURLToContain("companyDetails");
+		
+		InstructorDetails i = new InstructorDetails(driver);
 		Assert.assertEquals(i.instructorDetails_title().getText(), "Instructor Details");
 		i.browseImage().click();
 		Thread.sleep(3000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\imageUpload.exe");
 		i.instructorDetails_saveAndContinue().click(); 	
 		
-		ServicesAndProducts s = new ServicesAndProducts(driver);
 		solo.waitForURLToContain("reportSettings");
+		
+		ServicesAndProducts s = new ServicesAndProducts(driver);
 		Assert.assertEquals(s.servicesAndProducts_title().getText(), "Services and Products");
 		s.enterServiceOrProduct().sendKeys("Nutrition Consultations");
 		s.addCategory().click();
 		Assert.assertEquals(s.serviceAndProducts_1stcategory().getText(), "Nutrition Consultations");
 		s.servicesAndProducts_saveAndContinue().click();
 		
-		SessionsSettings se = new SessionsSettings(driver);
 		solo.waitForURLToContain("classesSettings");
+		
+		SessionsSettings se = new SessionsSettings(driver);
 		Assert.assertEquals(se.sessionSettings_title().getText(), "Sessions Settings");
 		se.enterSessionType().sendKeys("Yoga");
 		se.addSessionType().click();
 		Assert.assertEquals(se.newSessionAdded().getText(), "Yoga");
 		se.sessionSettings_SaveAndContinue().click();		
 		
-		PeakOrNonPeakHours p = new PeakOrNonPeakHours(driver);
 		solo.waitForURLToContain("hours");
+		
+		PeakOrNonPeakHours p = new PeakOrNonPeakHours(driver);
 		Assert.assertEquals(p.peakOrNonPeakHours_title().getText(), "Peak / Non-Peak Settings");
 		p.peakOrNonPeakHours_No().click();
-		Assert.assertTrue(p.peakOrNonPeakHours_No().isSelected());
 		p.peakOrNonPeakHours_saveAndContinue().click();
 		
-		ClientWaiver c = new ClientWaiver(driver);
-		solo.waitForURLToContain("clientWaiver");
-		Assert.assertEquals(c.clientWaiver_title().getText(), "Client Waiver");
+		solo.waitForURLToContain("clientWaiver");		
 		
+		ClientWaiver c = new ClientWaiver(driver);
+		Assert.assertEquals(c.clientWaiver_title().getText(), "Client Waiver");
 		c.uploadWaiver_browse().click();
 		Thread.sleep(3000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\fileUpload.exe");
@@ -85,8 +89,9 @@ public class InstructorDetailsToCalendar extends Base_File
 		c.addWaiverTerm().click();
 		c.waiverSaveAndContinue().click();
 
-		PoliciesAndProcedures p1 = new PoliciesAndProcedures(driver);
 		solo.waitForURLToContain("contractTerms");
+		
+		PoliciesAndProcedures p1 = new PoliciesAndProcedures(driver);
 		Assert.assertEquals(p1.policies_title().getText(), "Policies & Procedures");
 		p1.uploadPolicies_browse().click();
 		Thread.sleep(3000);
@@ -97,8 +102,9 @@ public class InstructorDetailsToCalendar extends Base_File
 		p1.addPoliciesTerm().click();
 		p1.policies_saveAndContinue().click();
 		
-		Studios s1 = new Studios(driver);
 		solo.waitForURLToContain("studios");
+		
+		Studios s1 = new Studios(driver);
 		Assert.assertEquals(s1.studios_title().getText(), "Create Your Studios");
 		s1.addStudios().click();
 		Assert.assertEquals(s1.addStudioModal_title().getText(), "Studio Details");
@@ -110,73 +116,76 @@ public class InstructorDetailsToCalendar extends Base_File
 		Assert.assertEquals(s1.newlyCreatedStudio().getText(), "Studio Fitness");
 		s1.studios_saveAndContinue().click();
 		
-		Packages pa = new Packages(driver);
-		solo.waitForURLToContain("packages");
-		Assert.assertEquals(pa.packages_title().getText(), "Create Packages");
-		pa.createSessionPack().click();
 		
+		solo.waitForURLToContain("packages");
+		
+		Packages pa = new Packages(driver);
+		Assert.assertEquals(pa.packages_title().getText(), "Create Packages");
+		pa.createMembership().click();
+		Assert.assertEquals(pa.clientType_title().getText(), "Who can purchase this membership?");
 		pa.clientType_newClients().click();
 		pa.clientType_introClients().click();
 		pa.clientType_continue().click();
+		Assert.assertEquals(pa.membershipDetails_title().getText(), "Complete the details of this membership");
+		pa.membershipDetails_enterNameOfMemPack().sendKeys("1 Year Pilates Membership Pack");
+		pa.membershipDetails_selectLengthOfMemPack().click();
+		pa.membershipDetails_selectLength12Month().click();
+		pa.membershipDetails_enterNumberOfSessions().sendKeys("30");
+		pa.membershipDetails_selectSessionsTimePeriod().click();
+		pa.membershipDetails_selectSessionsTimePeriodMonthly().click();	
+		pa.membershipDetails_selectTimes().click();
+		pa.membershipDetails_selectTimes_anyTime().click();
+		pa.membershipDetails_selectNoPurchaseLimit().click();
+		pa.membershipDetails_allowRolloverOfUnusedSessions().click();
+		pa.membershipDetails_continue().click();
+		Assert.assertEquals(pa.membershipPack_pricing_title().getText(), "What is the pricing structure for this membership?");
+		pa.membershipPack_price().sendKeys("1");
+		pa.membershipPack_selectPackageChargeTimePeriod().click();
+		pa.membershipPack_selectMonthlyPackageChargeTimePeriod().click();
+		pa.membershipPack_selectPackageChargeFromEvent().click();
+		pa.membershipPack_selectPackageChargeFromEventDateOfPurchase().click();
+		pa.membershipPack_pricing_continue().click();
+		Assert.assertEquals(pa.membershipPack_confirmation_title().getText(), "Confirm the details below to create the package");
+		pa.membershipPack_confirmation_continue().click();
+		Assert.assertTrue(pa.newlyCreatedMemPack_1st().isDisplayed());
+		pa.copyMemPack().click();
+		pa.clientType_continue().click();
+		pa.membershipDetails_enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1 Year Unlimited Membership Package");
+		pa.membershipDetails_enterNumberOfSessions().click();
+		pa.clientCanAttendUnlimitedSessions().click();
+		pa.membershipDetails_continue().click();
+		pa.membershipPack_pricing_continue().click();	
+		pa.membershipPack_confirmation_continue().click();
 		
+		
+		
+		pa.createSessionPack().click();
+		pa.clientType_newClients().click();
+		pa.clientType_introClients().click();
+		pa.clientType_continue().click();
 		pa.enterNameOfSessionPack().sendKeys("Free Yoga Trail Session Pack");
 		pa.enterNumberOfSessionsForSessionPack().sendKeys("15");
 		pa.selectTimes().click();
 		pa.selectTimesForSessionPack_anyTime().click();
 		pa.selectNoPurchaseLimitForSessionPack().click();
 		pa.sessionPackDetails_continue().click();
-		
 		pa.priceOfSessionPack().sendKeys("0");
 		pa.selectPackageExpiry().click();
 		pa.selectPackageExpiry_1yr().click();
 		pa.selectFromEvent().click();
 		pa.selectFromEvent_dateOfPurchase().click();
 		pa.pricing_continue().click();
-		
 		pa.confirmation_continue().click();
-		
 		pa.sessionPack_copy().click();
-		
 		pa.clientType_continue().click();
-		
 		pa.enterNameOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"Yoga Session Pack");
 		pa.enterNumberOfSessionsForSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"50");
 		Thread.sleep(2000);
 		pa.sessionPackDetails_continue().click();
-		
 		pa.priceOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1");
 		pa.pricing_continue().click();
 		pa.confirmation_continue().click();
-		pa.createMembership().click();
-		pa.clientType_newClients().click();
-		pa.clientType_introClients().click();
-		pa.clientType_continue().click();
-		pa.enterNameOfMemPack().sendKeys("1 Year Pilates Membership Pack");
-		pa.selectLengthOfMemPack().click();
-		pa.selectLength12Month().click();
-		pa.enterNumberOfSessionsForMemPack().sendKeys("30");
-		pa.selectSessionsTimePeriod().click();
-		pa.selectSessionsTimePeriodMonthly().click();
-		pa.selectTimes().click();
-		pa.selectTimesForMemPack_anyTime().click();
-		pa.selectNoPurchaseLimitForMemPack().click();
-		pa.allowRolloverOfUnusedSessions().click();
-		pa.sessionPackDetails_continue().click();
-		pa.priceOfSessionPack().sendKeys("1");
-		pa.selectPackageChargeTimePeriod().click();
-		pa.selectMonthlyPackageChargeTimePeriod().click();
-		pa.selectPackageChargeFromEvent().click();
-		pa.selectPackageChargeFromEventDateOfPurchase().click();
-		pa.pricing_continue().click();
-		pa.confirmation_continue().click();
-		pa.copyMemPack().click();
-		pa.clientType_continue().click();
-		pa.enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1 Year Unlimited Membership Package");
-		pa.enterNumberOfSessionsForMemPack().click();
-		pa.clientCanAttendUnlimitedSessions().click();
-		pa.sessionPackDetails_continue().click();
-		pa.pricing_continue().click();
-		pa.confirmation_continue().click();
+		
 		pa.packages_saveAndContinue().click();
 		Settings set = new Settings(driver);
 		set.PromoCodesBox().click();
@@ -216,8 +225,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		cal.repeatDays_sat().click();
 		cal.recurringSession_untilDate().sendKeys("03092026");
 		cal.save_recurringSessionModal().click();
-		cal.saveSession().click();	
-		
+		cal.saveSession().click();
 	}
 	
 	

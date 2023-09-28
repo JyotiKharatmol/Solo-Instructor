@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Login extends Solo_AbstractComponents
+public class Login extends SoloSettings_AbstractComponents
 {
 	WebDriver driver;
 	
@@ -36,6 +36,7 @@ public class Login extends Solo_AbstractComponents
 	
 	public WebElement username()
 	{
+		waitForVisibilityOfElement(username);
 		return username;
 	}
 	
@@ -44,6 +45,7 @@ public class Login extends Solo_AbstractComponents
 	
 	public WebElement password()
 	{
+		waitForVisibilityOfElement(password);
 		return password;
 	}
 	
@@ -60,6 +62,8 @@ public class Login extends Solo_AbstractComponents
 	
 	public WebElement loginButton()
 	{
+		waitForVisibilityOfElement(loginButton);
+		waitForElementToBeClickable(loginButton);
 		return loginButton;
 	}
 	

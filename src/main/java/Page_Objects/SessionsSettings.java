@@ -22,15 +22,19 @@ public class SessionsSettings extends SoloSettings_AbstractComponents{
 		return sessionSettings_title;
 	}
 	
-	@FindBy(css="div[class*='center']")
-	WebElement sessionSettings_elements;
+	@FindBy(css="h4 span")
+	WebElement sessionSettings_topElements;
+	
+	@FindBy(css="div[class*='center'] div")
+	WebElement sessionSettings_bottomElements;
 	
 	@FindBy(css="div input[type='text']")
 	WebElement enterSessionType;
 	
 	public WebElement enterSessionType()
 	{
-		waitForVisibilityOfElements(sessionSettings_elements);
+		waitForVisibilityOfElements(sessionSettings_topElements);
+		waitForVisibilityOfElements(sessionSettings_bottomElements);
 		waitForVisibilityOfElement(addSessionType);
 		waitForElementToBeClickable(enterSessionType);
 		return enterSessionType;

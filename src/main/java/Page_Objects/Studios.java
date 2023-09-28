@@ -23,11 +23,15 @@ public class Studios extends SoloSettings_AbstractComponents{
 		return studios_title;
 	}
 	
+	@FindBy(css="div[class*='center'] div div")
+	WebElement studios_bottomElements;
+	
 	@FindBy(xpath="//span[text()='+ ADD NEW STUDIOS']")
 	WebElement addStudios;
 	
 	public WebElement addStudios()
 	{
+		waitForVisibilityOfElements(studios_bottomElements);
 		waitForVisibilityOfElement(addStudios);
 		return addStudios;
 	}

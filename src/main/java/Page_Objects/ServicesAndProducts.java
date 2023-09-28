@@ -23,16 +23,20 @@ public class ServicesAndProducts extends SoloSettings_AbstractComponents
 		waitForVisibilityOfElement(servicesAndProducts_title);
 		return servicesAndProducts_title;
 	}
-
-	@FindBy(css="div[class*='center']")
-	WebElement servicesAndProducts_elements;
+	
+	@FindBy(css="h4 span")
+	WebElement servicesAndProducts_topElements;
+	
+	@FindBy(css="div[class*='center'] div")
+	WebElement servicesAndProducts_bottomElements;
 	
 	@FindBy(css="input[type='text']")
 	WebElement enterServiceOrProduct;
 	
 	public WebElement enterServiceOrProduct()
 	{	
-		waitForVisibilityOfElements(servicesAndProducts_elements);
+		waitForVisibilityOfElements(servicesAndProducts_topElements);
+		waitForVisibilityOfElements(servicesAndProducts_bottomElements);
 		waitForVisibilityOfElement(addCategory);
 		waitForElementToBeClickable(enterServiceOrProduct);
 		return enterServiceOrProduct;

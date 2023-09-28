@@ -25,8 +25,8 @@ public class PeakOrNonPeakHours extends SoloSettings_AbstractComponents
 		return peakOrNonPeakHours_title;
 	}
 	
-	@FindBy(css="div[class*='center']")
-	WebElement peakOrNonPeakHours_elements;
+	@FindBy(css="div[class*='grid'] span")
+	WebElement peakOrNonPeakHours_allElements;
 	
 	@FindBy(css="div[role='radiogroup'] label:nth-child(1) span:nth-child(1) span:nth-child(1)")
 	WebElement peakOrNonPeakHours_Yes;	
@@ -36,7 +36,7 @@ public class PeakOrNonPeakHours extends SoloSettings_AbstractComponents
 	
 	public WebElement peakOrNonPeakHours_No()
 	{
-		waitForVisibilityOfElements(peakOrNonPeakHours_elements);
+		waitForVisibilityOfElements(peakOrNonPeakHours_allElements);
 		waitForVisibilityOfElement(peakOrNonPeakHours_No);
 		return peakOrNonPeakHours_No;
 	}
