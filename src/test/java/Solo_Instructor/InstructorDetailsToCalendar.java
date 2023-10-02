@@ -37,7 +37,7 @@ public class InstructorDetailsToCalendar extends Base_File
 	{
 		Login l = new Login(driver);
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
-		l.password().sendKeys("uvAk)rJu");
+		l.password().sendKeys("cyC3Hd)(");
 		l.loginButton().click();
 		
 		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
@@ -116,7 +116,6 @@ public class InstructorDetailsToCalendar extends Base_File
 		Assert.assertEquals(s1.newlyCreatedStudio().getText(), "Studio Fitness");
 		s1.studios_saveAndContinue().click();
 		
-		
 		solo.waitForURLToContain("packages");
 		
 		Packages pa = new Packages(driver);
@@ -137,7 +136,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		pa.membershipDetails_selectTimes_anyTime().click();
 		pa.membershipDetails_selectNoPurchaseLimit().click();
 		pa.membershipDetails_allowRolloverOfUnusedSessions().click();
-		pa.membershipDetails_continue().click();
+		pa.membershipDetails_1YearPilatesMemPack_continue().click();
 		Assert.assertEquals(pa.membershipPack_pricing_title().getText(), "What is the pricing structure for this membership?");
 		pa.membershipPack_price().sendKeys("1");
 		pa.membershipPack_selectPackageChargeTimePeriod().click();
@@ -147,47 +146,65 @@ public class InstructorDetailsToCalendar extends Base_File
 		pa.membershipPack_pricing_continue().click();
 		Assert.assertEquals(pa.membershipPack_confirmation_title().getText(), "Confirm the details below to create the package");
 		pa.membershipPack_confirmation_continue().click();
-		Assert.assertTrue(pa.newlyCreatedMemPack_1st().isDisplayed());
-		pa.copyMemPack().click();
+		Assert.assertEquals(pa.createdMemPackName().getText(), "1 Year Pilates Membership Pack");
+		
+		pa.copyMemPack_1st().click();
 		pa.clientType_continue().click();
 		pa.membershipDetails_enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1 Year Unlimited Membership Package");
 		pa.membershipDetails_enterNumberOfSessions().click();
 		pa.clientCanAttendUnlimitedSessions().click();
-		pa.membershipDetails_continue().click();
+		pa.membershipDetails_copy_unlimitedMemPack_continue().click();
 		pa.membershipPack_pricing_continue().click();	
 		pa.membershipPack_confirmation_continue().click();
+		Assert.assertEquals(pa.createdMemPackName().getText(), "1 Year Unlimited Membership Package");
 		
-		
-		
+		pa.copyMemPack_2nd().click();
+		pa.clientType_continue().click();
+		pa.membershipDetails_enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"Free First Month Membership Package");
+		pa.membershipDetails_enterNumberOfSessions().sendKeys(Keys.chord(Keys.CONTROL,"a"),"25");
+		pa.membershipDetails_copy_freeFirstMonthMemPack_continue().click();
+		pa.membershipPack_diffFirstMonthPriceCheckbox().click();
+		pa.membershipPack_enterDiffFirstMonthPrice().sendKeys("0");
+		pa.membershipPack_pricing_continue().click();
+		pa.membershipPack_confirmation_continue().click();
+		Assert.assertEquals(pa.createdMemPackName().getText(), "Free First Month Membership Package");
+	
 		pa.createSessionPack().click();
+		Assert.assertEquals(pa.clientType_title().getText(), "Who can purchase this Session pack?");
 		pa.clientType_newClients().click();
 		pa.clientType_introClients().click();
 		pa.clientType_continue().click();
-		pa.enterNameOfSessionPack().sendKeys("Free Yoga Trail Session Pack");
-		pa.enterNumberOfSessionsForSessionPack().sendKeys("15");
-		pa.selectTimes().click();
-		pa.selectTimesForSessionPack_anyTime().click();
-		pa.selectNoPurchaseLimitForSessionPack().click();
-		pa.sessionPackDetails_continue().click();
-		pa.priceOfSessionPack().sendKeys("0");
-		pa.selectPackageExpiry().click();
-		pa.selectPackageExpiry_1yr().click();
-		pa.selectFromEvent().click();
-		pa.selectFromEvent_dateOfPurchase().click();
-		pa.pricing_continue().click();
-		pa.confirmation_continue().click();
-		pa.sessionPack_copy().click();
-		pa.clientType_continue().click();
-		pa.enterNameOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"Yoga Session Pack");
-		pa.enterNumberOfSessionsForSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"50");
-		Thread.sleep(2000);
-		pa.sessionPackDetails_continue().click();
-		pa.priceOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1");
-		pa.pricing_continue().click();
-		pa.confirmation_continue().click();
+		Assert.assertEquals(pa.sessionDetails_title().getText(), "Complete the details of this session pack");
+		pa.sessionDetails_enterNameOfSessionPack().sendKeys("Free Yoga Trail Session Pack");
+		pa.sessionDetails_enterNumberOfSessions().sendKeys("15");
+		pa.sessionDetails_selectTimes().click();
+		pa.sessionDetails_selectTimes_anyTime().click();
+		pa.sessionDetails_selectNoPurchaseLimit().click();
+		pa.sessionDetails_continue().click();
+		Assert.assertEquals(pa.sessionPack_pricing_title().getText(), "What is the pricing structure for this session pack?");
+		pa.sessionPack_price().sendKeys("0");
+		pa.sessionPack_selectExpiryTime().click();
+		pa.sessionPack_selectExpiryTime_1yr().click();
+		pa.sessionPack_selectFromEvent().click();
+		pa.sessionPack_selectFromEventDateOfPurchase().click();
+		pa.sessionPack_pricing_continue().click();
+		Assert.assertEquals(pa.sessionPack_confirmation_title().getText(), "Confirm the details below to create the package");
+		pa.sessionPack_confirmation_continue().click();
+		Assert.assertEquals(pa.createdSessionPackName().getText(), "Free Yoga Trail Session Pack");
 		
+		pa.copy_sessionPack_1st().click();
+		pa.clientType_continue().click();
+		pa.sessionDetails_enterNameOfSessionPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"Yoga Session Pack");
+		pa.sessionDetails_enterNumberOfSessions().sendKeys(Keys.chord(Keys.CONTROL,"a"),"50");
+		pa.sessionDetails_continue().click();
+		pa.sessionPack_price().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1");
+		pa.sessionPack_pricing_continue().click();
+		pa.sessionPack_confirmation_continue().click();
+		Assert.assertEquals(pa.createdSessionPackName().getText(), "Yoga Session Pack");
 		pa.packages_saveAndContinue().click();
+		
 		Settings set = new Settings(driver);
+	
 		set.PromoCodesBox().click();
 		PromoCodes pro = new PromoCodes(driver);
 		pro.promoCodes_skip().click();
@@ -226,6 +243,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		cal.recurringSession_untilDate().sendKeys("03092026");
 		cal.save_recurringSessionModal().click();
 		cal.saveSession().click();
+		
 	}
 	
 	

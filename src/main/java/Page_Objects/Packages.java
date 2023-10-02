@@ -46,13 +46,16 @@ public class Packages extends SoloSettings_AbstractComponents
 	}
 	
 	@FindBy(css="div[class*='horizontal'] div")
-	WebElement createMembership_packageProgessBar;
+	WebElement createMembershipOrSession_packageProgessBar;
 	
 	@FindBy(css="div[class*='center'] h2")
 	WebElement clientType_title;
 	
 	public WebElement clientType_title()
 	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(clientType_allTypeOfClients);
+		waitForVisibilityOfElements(clientType_bottomElements);
 		waitForVisibilityOfElement(clientType_title);
 		return clientType_title;
 	}
@@ -68,7 +71,7 @@ public class Packages extends SoloSettings_AbstractComponents
 	
 	public WebElement clientType_newClients()
 	{
-		waitForVisibilityOfElements(createMembership_packageProgessBar);
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
 		waitForVisibilityOfElements(clientType_allTypeOfClients);
 		waitForVisibilityOfElements(clientType_bottomElements);
 		waitForVisibilityOfElement(clientType_newClients);
@@ -119,7 +122,7 @@ public class Packages extends SoloSettings_AbstractComponents
 	
 	public WebElement membershipDetails_enterNameOfMemPack()
 	{
-		waitForVisibilityOfElements(createMembership_packageProgessBar);
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
 		waitForVisibilityOfElements(membershipDetails_allFieldElements);
 		waitForVisibilityOfElements(membershipDetails_bottomElements);
 		waitForElementToBeClickable(membershipDetails_enterNameOfMemPack);
@@ -148,28 +151,20 @@ public class Packages extends SoloSettings_AbstractComponents
 		return membershipDetails_selectLength12Month;
 	}
 	
-	@FindBy(css="input[value='365']")
-	WebElement membershipDetails_selectedLength12Month;
-	
 	@FindBy(css="input[name='clientCanAttend']")
 	WebElement membershipDetails_enterNumberOfSessions;
 	
 	public WebElement membershipDetails_enterNumberOfSessions()
 	{
-		waitForVisibilityOfElement(membershipDetails_selectedLength12Month);
 		waitForElementToBeClickable(membershipDetails_enterNumberOfSessions);
 		return membershipDetails_enterNumberOfSessions;
 	}
-	
-	@FindBy(css="input[value='30']")
-	WebElement membershipDetails_enteredNumberOfSessions;
 	
 	@FindBy(css="div[id='mui-component-select-timePeriod']")
 	WebElement membershipDetails_selectSessionsTimePeriod;
 	
 	public WebElement membershipDetails_selectSessionsTimePeriod()
 	{
-		waitForVisibilityOfElement(membershipDetails_enteredNumberOfSessions);
 		waitForElementToBeClickable(membershipDetails_selectSessionsTimePeriod);
 		return membershipDetails_selectSessionsTimePeriod;
 	}
@@ -225,7 +220,21 @@ public class Packages extends SoloSettings_AbstractComponents
 	@FindBy(xpath="//span[text()='CONTINUE']")
 	WebElement membershipDetails_continue;
 	
-	public WebElement membershipDetails_continue()
+	public WebElement membershipDetails_1YearPilatesMemPack_continue()
+	{
+		waitForVisibilityOfElements(membershipDetails_checkedRadioButtons);
+		waitForElementToBeClickable(membershipDetails_continue);
+		return membershipDetails_continue;
+	}
+	
+	public WebElement membershipDetails_copy_unlimitedMemPack_continue()
+	{
+		waitForVisibilityOfElement(membershipDetails_checkedRadioButtons);
+		waitForElementToBeClickable(membershipDetails_continue);
+		return membershipDetails_continue;
+	}
+	
+	public WebElement membershipDetails_copy_freeFirstMonthMemPack_continue()
 	{
 		waitForVisibilityOfElements(membershipDetails_checkedRadioButtons);
 		waitForElementToBeClickable(membershipDetails_continue);
@@ -252,22 +261,43 @@ public class Packages extends SoloSettings_AbstractComponents
 
 	public WebElement membershipPack_price()
 	{
-		waitForVisibilityOfElements(createMembership_packageProgessBar);
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
 		waitForVisibilityOfElements(membershipPack_pricing_allElements);
 		waitForVisibilityOfElements(membershipPack_bottomElements);
 		waitForElementToBeClickable(membershipPack_price);
 		return membershipPack_price;
 	}
 	
-	@FindBy(css="input[value='1.00']")
-	WebElement membershipPack_enteredPrice;
+	@FindBy(css="span[class*='Checkbox']")
+	WebElement membershipPack_diffFirstMonthPriceCheckbox;
+	
+	public WebElement membershipPack_diffFirstMonthPriceCheckbox()
+	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(membershipPack_pricing_allElements);
+		waitForVisibilityOfElements(membershipPack_bottomElements);
+		waitForElementToBeClickable(membershipPack_diffFirstMonthPriceCheckbox);
+		return membershipPack_diffFirstMonthPriceCheckbox;
+	}
+	
+	@FindBy(xpath="//div[contains(@class,'MuiGrid-container')]/div[4]/div/div[1]/span[3]/div/div/div/div/input")
+	WebElement membershipPack_enterDiffFirstMonthPrice;
+	
+	public WebElement membershipPack_enterDiffFirstMonthPrice()
+	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(membershipPack_pricing_allElements);
+		waitForVisibilityOfElements(membershipPack_bottomElements);
+		waitForVisibilityOfElement(membershipPack_enterDiffFirstMonthPrice);
+		waitForElementToBeClickable(membershipPack_enterDiffFirstMonthPrice);
+		return membershipPack_enterDiffFirstMonthPrice;
+	}
 	
 	@FindBy(css="div[id*='select-chargeTimePeriod']")
 	WebElement membershipPack_selectPackageChargeTimePeriod;
 	
 	public WebElement membershipPack_selectPackageChargeTimePeriod()
 	{
-		waitForVisibilityOfElement(membershipPack_enteredPrice);
 		waitForElementToBeClickable(membershipPack_selectPackageChargeTimePeriod);
 		return membershipPack_selectPackageChargeTimePeriod;
 	}
@@ -328,25 +358,40 @@ public class Packages extends SoloSettings_AbstractComponents
 	{
 		waitForVisibilityOfElements(membershipPack_confirmationElements);
 		waitForElementToBeClickable(membershipPack_confirmation_continue);
-		return confirmation_continue;
+		return membershipPack_confirmation_continue;
 	}
 	
-	@FindBy(xpath="//ul/li[contains(@class,'active')][1]/div")
-	WebElement newlyCreatedMemPack_1st;
+	@FindBy(xpath="//div[contains(@class,'MuiPaper-rounded')]/div/div[1]/div[5]/div/div/ul/li[1]/div/div[2]/div[1]")
+	WebElement createdMemPackName;
 	
-	public WebElement newlyCreatedMemPack_1st()
+	public WebElement createdMemPackName()
 	{
-		waitForVisibilityOfElement(newlyCreatedMemPack_1st);
-		return newlyCreatedMemPack_1st;
+		waitForVisibilityOfElement(packages_title);
+		waitForVisibilityOfElement(createdMemPackName);
+		return createdMemPackName;
 	}
 	
-	@FindBy(css="a[href*='membership/copy'] img")
-	WebElement copyMemPack;
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][5]/div/div/ul/li[1]/div/div[3]/a")
+	WebElement memPack_1st_elements;
 	
-	public WebElement copyMemPack()
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][5]/div/div/ul/li[1]/div/div[3]/a[1]")
+	WebElement copyMemPack_1st;
+	
+	public WebElement copyMemPack_1st()
 	{
-		waitForVisibilityOfElement(copyMemPack);
-		return copyMemPack;
+		waitForVisibilityOfElements(memPack_1st_elements);
+		waitForVisibilityOfElement(copyMemPack_1st);
+		return copyMemPack_1st;
+	}
+	
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][5]/div/div/ul/li[2]/div/div[3]/a[1]")
+	WebElement copyMemPack_2nd;
+	
+	public WebElement copyMemPack_2nd()
+	{
+		waitForVisibilityOfElement(packages_title);
+		waitForVisibilityOfElement(copyMemPack_2nd);	
+		return copyMemPack_2nd;
 	}
 	
 	@FindBy(css="ul li")
@@ -363,129 +408,226 @@ public class Packages extends SoloSettings_AbstractComponents
 	
 	public WebElement createSessionPack()
 	{
+		waitForVisibilityOfElement(createSessionPack);
+		waitForElementToBeClickable(createSessionPack);
 		return createSessionPack;
 	}
 	
-	@FindBy(css="input[name='classpackName']")
-	WebElement enterNameOfSessionPack;
+	@FindBy(css="div[class*='center'] h2")
+	WebElement sessionDetails_title;
 	
-	public WebElement enterNameOfSessionPack()
+	@FindBy(xpath="//div[contains(@class,'spacing')]/div")
+	WebElement sessionDetails_midElements;
+	
+	@FindBy(css="div[class*='MuiBox-root']")
+	WebElement sessionDetails_topAndBottomElements;
+	
+	public WebElement sessionDetails_title()
 	{
-		waitForElementToBeClickable(clientType_continue);
-		return enterNameOfSessionPack;
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionDetails_midElements);
+		waitForVisibilityOfElements(sessionDetails_topAndBottomElements);
+		waitForVisibilityOfElement(sessionDetails_title);
+		return sessionDetails_title;
+	}
+		
+	@FindBy(css="input[name='classpackName']")
+	WebElement sessionDetails_enterNameOfSessionPack;
+	
+	public WebElement sessionDetails_enterNameOfSessionPack()
+	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionDetails_midElements);
+		waitForVisibilityOfElements(sessionDetails_topAndBottomElements);
+		waitForElementToBeClickable(sessionDetails_enterNameOfSessionPack);
+		return sessionDetails_enterNameOfSessionPack;
 	}
 	
 	@FindBy(xpath="//div[@inputmode='numeric']/div/input")
-	WebElement enterNumberOfSessionsForSessionPack;
+	WebElement sessionDetails_enterNumberOfSessions;
 	
-	public WebElement enterNumberOfSessionsForSessionPack()
+	public WebElement sessionDetails_enterNumberOfSessions()
 	{
-		return enterNumberOfSessionsForSessionPack;
+		waitForVisibilityOfElement(sessionDetails_enterNumberOfSessions);
+		waitForElementToBeClickable(sessionDetails_enterNumberOfSessions);
+		return sessionDetails_enterNumberOfSessions;
 	}
 	
 	@FindBy(css="div[id*='select-timeSlot']")
-	WebElement selectTimes;
+	WebElement sessionDetails_selectTimes;
 	
-	public WebElement selectTimes()
+	public WebElement sessionDetails_selectTimes()
 	{
-		return selectTimes;
+		waitForElementToBeClickable(sessionDetails_selectTimes);
+		return sessionDetails_selectTimes;
 	}
 	
 	@FindBy(css="ul li:nth-child(1)")
-	WebElement selectTimesForSessionPack_anyTime;
+	WebElement sessionDetails_selectTimes_anyTime;
 	
-	public WebElement selectTimesForSessionPack_anyTime()
+	public WebElement sessionDetails_selectTimes_anyTime()
 	{
-		waitForElementToBeClickable(selectTimesForSessionPack_anyTime);
-		return selectTimesForSessionPack_anyTime;
+		waitForVisibilityOfElement(sessionDetails_selectTimes_anyTime);
+		waitForElementToBeClickable(sessionDetails_selectTimes_anyTime);
+		return sessionDetails_selectTimes_anyTime;
 	}
 	
 	@FindBy(xpath="//div[@role='radiogroup']/label[2]/span[1]/span[1]")
-	WebElement selectNoPurchaseLimitForSessionPack;
+	WebElement sessionDetails_selectNoPurchaseLimit;
 	
-	public WebElement selectNoPurchaseLimitForSessionPack()
+	public WebElement sessionDetails_selectNoPurchaseLimit()
 	{
-		return selectNoPurchaseLimitForSessionPack;
+		waitForVisibilityOfElement(sessionDetails_selectNoPurchaseLimit);
+		waitForElementToBeClickable(sessionDetails_selectNoPurchaseLimit);
+		return sessionDetails_selectNoPurchaseLimit;
 	}
 	
-	@FindBy(xpath="//span[text()='CONTINUE']")
-	WebElement sessionPackDetails_continue;
+	@FindBy(css="span[class*='checked']")
+	WebElement sessionDetails_checkedNoPurchaseLimit;
 	
-	public WebElement sessionPackDetails_continue()
+	@FindBy(xpath="//span[text()='CONTINUE']")
+	WebElement sessionDetails_continue;
+	
+	public WebElement sessionDetails_continue()
 	{
-		waitForElementToBeClickable(sessionPackDetails_continue);
-		return sessionPackDetails_continue;
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionDetails_midElements);
+		waitForVisibilityOfElements(sessionDetails_topAndBottomElements);
+		waitForVisibilityOfElement(sessionDetails_checkedNoPurchaseLimit);
+		waitForElementToBeClickable(sessionDetails_continue);
+		return sessionDetails_continue;
+	}
+	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement sessionPack_pricing_title;
+	
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][1]")
+	WebElement sessionPack_pricingElements;
+	
+	@FindBy(css="div[class*='MuiBox']")
+	WebElement sessionPack_pricingTopAndBottomElements;
+	
+	public WebElement sessionPack_pricing_title()
+	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionPack_pricingElements);
+		waitForVisibilityOfElements(sessionPack_pricingTopAndBottomElements);
+		waitForVisibilityOfElement(sessionPack_pricing_title);
+		return sessionPack_pricing_title;
 	}
 	
 	@FindBy(css="input[type='text']")
-	WebElement priceOfSessionPack;
+	WebElement sessionPack_price;
 	
-	public WebElement priceOfSessionPack()
+	public WebElement sessionPack_price()
 	{
-		waitForElementToBeClickable(priceOfSessionPack);
-		return priceOfSessionPack;
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionPack_pricingElements);
+		waitForVisibilityOfElements(sessionPack_pricingTopAndBottomElements);
+		waitForElementToBeClickable(sessionPack_price);
+		return sessionPack_price;
 	}
 	
 	@FindBy(css="div[id='mui-component-select-expireTimePeriod']")
-	WebElement selectPackageExpiry;
+	WebElement sessionPack_selectExpiryTime;
 	
-	public WebElement selectPackageExpiry()
+	public WebElement sessionPack_selectExpiryTime()
 	{
-		return selectPackageExpiry;
+		waitForElementToBeClickable(sessionPack_selectExpiryTime);
+		return sessionPack_selectExpiryTime;
 	}
 	
 	@FindBy(css="ul li:nth-child(7)")
-	WebElement selectPackageExpiry_1yr;
+	WebElement sessionPack_selectExpiryTime_1yr;
 	
-	public WebElement selectPackageExpiry_1yr()
+	public WebElement sessionPack_selectExpiryTime_1yr()
 	{
-		waitForElementToBeClickable(selectPackageExpiry_1yr);
-		return selectPackageExpiry_1yr;
+		waitForVisibilityOfElement(sessionPack_selectExpiryTime_1yr);
+		waitForElementToBeClickable(sessionPack_selectExpiryTime_1yr);
+		return sessionPack_selectExpiryTime_1yr;
 	}
 	
 	@FindBy(css="div[id='mui-component-select-expireEvent']")
-	WebElement selectFromEvent;
+	WebElement sessionPack_selectFromEvent;
 	
-	public WebElement selectFromEvent()
+	public WebElement sessionPack_selectFromEvent()
 	{
-		return selectFromEvent;
+		waitForElementToBeClickable(sessionPack_selectFromEvent);
+		return sessionPack_selectFromEvent;
 	}
 	
 	@FindBy(css="ul li:nth-child(1)")
-	WebElement selectFromEvent_dateOfPurchase;
+	WebElement sessionPack_selectFromEventDateOfPurchase;
 	
-	public WebElement selectFromEvent_dateOfPurchase()
+	public WebElement sessionPack_selectFromEventDateOfPurchase()
 	{
-		waitForElementToBeClickable(selectFromEvent_dateOfPurchase);
-		return selectFromEvent_dateOfPurchase;
+		waitForVisibilityOfElement(sessionPack_selectFromEventDateOfPurchase);
+		waitForElementToBeClickable(sessionPack_selectFromEventDateOfPurchase);
+		return sessionPack_selectFromEventDateOfPurchase;
 	}
 	
 	@FindBy(xpath="//span[text()='CONTINUE']")
-	WebElement pricing_continue;
+	WebElement sessionPack_pricing_continue;
 	
-	public WebElement pricing_continue()
+	public WebElement sessionPack_pricing_continue()
 	{
-		waitForElementToBeClickable(pricing_continue);
-		return pricing_continue;
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionPack_pricingElements);
+		waitForVisibilityOfElements(sessionPack_pricingTopAndBottomElements);
+		waitForElementToBeClickable(sessionPack_pricing_continue);
+		return sessionPack_pricing_continue;
+	}
+	
+	@FindBy(css="div[class*='center'] h2")
+	WebElement sessionPack_confirmation_title;
+	
+	@FindBy(css="div[class*='MuiGrid'] p")
+	WebElement sessionPack_confirmationElements;
+	
+	public WebElement sessionPack_confirmation_title()
+	{
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionPack_confirmationElements);
+		waitForVisibilityOfElement(sessionPack_confirmation_title);
+		return sessionPack_confirmation_title;
 	}
 	
 	@FindBy(xpath="//span[text()='CONTINUE']")
-	WebElement confirmation_continue;
+	WebElement sessionPack_confirmation_continue;
 	
-	public WebElement confirmation_continue()
+	public WebElement sessionPack_confirmation_continue()
 	{
-		waitForElementToBeClickable(confirmation_continue);
-		return confirmation_continue;
+		waitForVisibilityOfElements(createMembershipOrSession_packageProgessBar);
+		waitForVisibilityOfElements(sessionPack_confirmationElements);
+		waitForElementToBeClickable(sessionPack_confirmation_continue);
+		return sessionPack_confirmation_continue;
 	}
 	
-	@FindBy(css="a[href*='copy']")
-	WebElement sessionPack_copy;
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][9]/div/div/ul/li[1]/div/div[2]/div[1]")
+	WebElement createdSessionPackName;
 	
-	public WebElement sessionPack_copy()
+	public WebElement createdSessionPackName()
 	{
-		waitForElementToBeClickable(sessionPack_copy);
-		return sessionPack_copy;
+		waitForVisibilityOfElement(packages_title);
+		waitForVisibilityOfElement(createdSessionPackName);
+		return createdSessionPackName;
+	}	
+	
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][9]/div/div/ul/li[1]/div/div[3]/a")
+	WebElement copy_sessionPack_elements;
+	
+	@FindBy(xpath="//div[contains(@class,'MuiGrid')][9]/div/div/ul/li[1]/div/div[3]/a[1]")
+	WebElement copy_sessionPack_1st;
+	
+	public WebElement copy_sessionPack_1st()
+	{
+		waitForVisibilityOfElements(copy_sessionPack_elements);
+		waitForVisibilityOfElement(copy_sessionPack_1st);
+		return copy_sessionPack_1st;
 	}
+	
+	@FindBy(xpath="//li[contains(@class,'carousel')]/div")
+	WebElement packages_allCreatedPackages;
 	
 	@FindBy(xpath="//span[text()='PREVIOUS STEP']")
 	WebElement packages_previousStep;
@@ -500,7 +642,11 @@ public class Packages extends SoloSettings_AbstractComponents
 
 	public WebElement packages_saveAndContinue()
 	{
-		waitForVisibilityOfElement(packages_previousStep);
+		waitForVisibilityOfElement(packages_title);
+		waitForVisibilityOfElement(packages_description);
+		waitForVisibilityOfElements(packages_memAndSessionPackDescription);
+		waitForVisibilityOfElements(packages_allCreatedPackages);
+		waitForVisibilityOfElements(packages_bottomElements);
 		waitForElementToBeClickable(packages_saveAndContinue);
 		return packages_saveAndContinue;
 	}
