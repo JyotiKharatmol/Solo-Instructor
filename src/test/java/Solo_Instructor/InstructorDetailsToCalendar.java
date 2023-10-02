@@ -37,7 +37,7 @@ public class InstructorDetailsToCalendar extends Base_File
 	{
 		Login l = new Login(driver);
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
-		l.password().sendKeys("cyC3Hd)(");
+		l.password().sendKeys("m5p@Jmjt");
 		l.loginButton().click();
 		
 		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
@@ -147,7 +147,6 @@ public class InstructorDetailsToCalendar extends Base_File
 		Assert.assertEquals(pa.membershipPack_confirmation_title().getText(), "Confirm the details below to create the package");
 		pa.membershipPack_confirmation_continue().click();
 		Assert.assertEquals(pa.createdMemPackName().getText(), "1 Year Pilates Membership Pack");
-		
 		pa.copyMemPack_1st().click();
 		pa.clientType_continue().click();
 		pa.membershipDetails_enterNameOfMemPack().sendKeys(Keys.chord(Keys.CONTROL,"a"),"1 Year Unlimited Membership Package");
@@ -202,7 +201,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		pa.sessionPack_confirmation_continue().click();
 		Assert.assertEquals(pa.createdSessionPackName().getText(), "Yoga Session Pack");
 		pa.packages_saveAndContinue().click();
-		
+	
 		Settings set = new Settings(driver);
 	
 		set.PromoCodesBox().click();

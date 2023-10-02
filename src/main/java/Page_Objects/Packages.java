@@ -48,6 +48,12 @@ public class Packages extends SoloSettings_AbstractComponents
 	@FindBy(css="div[class*='horizontal'] div")
 	WebElement createMembershipOrSession_packageProgessBar;
 	
+	@FindBy(css="div[class*='MuiFormGroup-root'] label")
+	WebElement clientType_allTypeOfClients;
+	
+	@FindBy(css="div[class*='MuiBox-root'] div")
+	WebElement clientType_bottomElements;
+	
 	@FindBy(css="div[class*='center'] h2")
 	WebElement clientType_title;
 	
@@ -59,12 +65,6 @@ public class Packages extends SoloSettings_AbstractComponents
 		waitForVisibilityOfElement(clientType_title);
 		return clientType_title;
 	}
-	
-	@FindBy(css="div[class*='MuiFormGroup-root'] label")
-	WebElement clientType_allTypeOfClients;
-	
-	@FindBy(css="div[class*='MuiBox-root'] div")
-	WebElement clientType_bottomElements;
 
 	@FindBy(xpath="//label[@class='MuiFormControlLabel-root'][1]/span[1]/span[1]")
 	WebElement clientType_newClients;
@@ -142,6 +142,9 @@ public class Packages extends SoloSettings_AbstractComponents
 		return membershipDetails_selectLengthOfMemPack;
 	}
 	
+	@FindBy(css="ul li")
+	WebElement membershipDetails_selectLengthOfMemPackList;
+	
 	@FindBy(css="ul li:nth-child(4)")
 	WebElement membershipDetails_selectLength12Month;
 	
@@ -210,6 +213,7 @@ public class Packages extends SoloSettings_AbstractComponents
 	
 	public WebElement membershipDetails_allowRolloverOfUnusedSessions()
 	{
+		waitForVisibilityOfElement(membershipDetails_checkedRadioButtons);
 		waitForElementToBeClickable(membershipDetails_allowRolloverOfUnusedSessions);
 		return membershipDetails_allowRolloverOfUnusedSessions;
 	}
@@ -241,11 +245,15 @@ public class Packages extends SoloSettings_AbstractComponents
 		return membershipDetails_continue;
 	}
 	
+	@FindBy(css="svg[class*='active']")
+	WebElement membershipDetails_activePricingStep;
+	
 	@FindBy(css="div[class*='center'] h2")
 	WebElement membershipPack_pricing_title;
 	
 	public WebElement membershipPack_pricing_title()
 	{
+		waitForVisibilityOfElement(membershipDetails_activePricingStep);
 		waitForVisibilityOfElement(membershipPack_pricing_title);
 		return membershipPack_pricing_title;
 	}
@@ -339,11 +347,15 @@ public class Packages extends SoloSettings_AbstractComponents
 		return membershipPack_pricing_continue;
 	}
 	
+	@FindBy(css="svg[class*='active']")
+	WebElement membershipPack_activeConfirmationStep;
+	
 	@FindBy(css="div[class*='center'] h2")
 	WebElement membershipPack_confirmation_title;
 	
 	public WebElement membershipPack_confirmation_title()
 	{
+		waitForVisibilityOfElement(membershipPack_activeConfirmationStep);
 		waitForVisibilityOfElement(membershipPack_confirmation_title);
 		return membershipPack_confirmation_title;
 	}

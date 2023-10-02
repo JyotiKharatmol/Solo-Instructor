@@ -131,6 +131,12 @@ public class SoloSettings_AbstractComponents extends Solo_AbstractComponents
 		w.until(ExpectedConditions.visibilityOfAllElements(a));		
 	}
 	
+	public void waitForInvisibilityOfElements(WebElement a)
+	{
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(50));
+		w.until(ExpectedConditions.invisibilityOfAllElements(a));
+	}
+	
 	public void waitForURLToContain(String a)
 	{
 		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(100));
