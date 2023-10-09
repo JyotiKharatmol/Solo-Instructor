@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Solo_Instructor.InstructorDetailsToCalendar">
+      <class name="Solo_Instructor.OnboardSettings">
         <methods>
-          <include name="InstructorSettings"/>
-          <include name="tearDown"/>
+          <include name="InstructorDetails"/>
           <include name="initialize"/>
+          <include name="teardown"/>
         </methods>
-      </class> <!-- Solo_Instructor.InstructorDetailsToCalendar -->
+      </class> <!-- Solo_Instructor.OnboardSettings -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

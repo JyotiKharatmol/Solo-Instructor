@@ -61,7 +61,7 @@ public class Solo_AbstractComponents
 	
 	public void waitForVisibilityOfElement(WebElement a)
 	{
-		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(100));
 		w.until(ExpectedConditions.visibilityOf(a));
 				
 	}

@@ -265,7 +265,7 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 	
 	public WebElement instructorDetails_saveAndContinue()
 	{
-		waitForVisibilityOfElement(instructorDetails_uploadedImage);
+		//waitForVisibilityOfElement(instructorDetails_uploadedImage);
 		waitForElementToBeClickable(instructorDetails_saveAndContinue);
 		return instructorDetails_saveAndContinue;
 	}

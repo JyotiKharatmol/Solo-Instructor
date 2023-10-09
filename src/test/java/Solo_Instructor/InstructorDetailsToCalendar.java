@@ -207,6 +207,7 @@ public class InstructorDetailsToCalendar extends Base_File
 		set.PromoCodesBox().click();
 		PromoCodes pro = new PromoCodes(driver);
 		pro.promoCodes_skip().click();
+		
 		FitnessSessionTemplates f = new FitnessSessionTemplates(driver);
 		f.addFitnessSession().click();
 		f.enterSessionName().sendKeys("Yoga Beginner");
@@ -221,9 +222,11 @@ public class InstructorDetailsToCalendar extends Base_File
 		f.selectServices_nutrition().click();
 		f.saveFitnessSession().click();
 		f.fitnessSession_saveAndContinue().click();
+		
 		EmailSettings e = new EmailSettings(driver);
 		e.enterEmail().sendKeys("jyoti.kharatmol@azularc.com");
 		e.emailSettings_saveAndContinue().click();
+		
 		Calendar cal = new Calendar(driver);
 		cal.addSession().click();
 		cal.selectSession().click();

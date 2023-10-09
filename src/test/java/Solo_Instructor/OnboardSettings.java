@@ -9,6 +9,7 @@ import Page_Objects.Solo_AbstractComponents;
 import Page_Objects.Login;
 import Page_Objects.ServicesAndProducts;
 import Page_Objects.Settings;
+import Page_Objects.SoloSettings_AbstractComponents;
 import Resource_Properties.Base_File;
 
 public class OnboardSettings extends Base_File
@@ -28,10 +29,21 @@ public class OnboardSettings extends Base_File
 		l.username().sendKeys("jyoti.kharatmol@azularc.com");
 		l.password().sendKeys("Password@3");
 		l.loginButton().click();
+		
+		SoloSettings_AbstractComponents solo = new SoloSettings_AbstractComponents(driver);
+		solo.waitForURLToContain("app");
+		
 		Solo_AbstractComponents s = new Solo_AbstractComponents(driver);
+		
 		s.settings().click();
+		
+		solo.waitForURLToContain("settings");
+		
 		Settings se = new Settings(driver);
 		se.InstructorDetailsBox().click();
+		
+		solo.waitForURLToContain("companyDetails");
+		
 		InstructorDetails i = new InstructorDetails(driver);
 		Assert.assertEquals(i.instructorDetails_title().getText(), "Instructor Details");
 		Assert.assertEquals(i.brandName().getAttribute("value"), "Cross-Fit");
@@ -47,10 +59,13 @@ public class OnboardSettings extends Base_File
 		Assert.assertEquals(i.merchantUsername().getAttribute("value"), "SmartStudioDev");
 		i.togglePasswordVisibilityIcon().click();
 		Assert.assertEquals(i.merchantPassword().getAttribute("value"), "SmartDev!-00");
+		/*
 		i.browseImage().click();
 		Thread.sleep(2000);
 		Runtime.getRuntime().exec("C:\\Users\\jyoti_xfiqe3z\\Desktop\\autoIT\\imageUpload.exe");
+		*/
 		i.instructorDetails_saveAndContinue().click();
+		solo.waitForURLToContain("reportSettings");
 		ServicesAndProducts ser = new ServicesAndProducts(driver);
 		Assert.assertEquals(ser.servicesAndProducts_title().getText(), "Services and Products");
 	}

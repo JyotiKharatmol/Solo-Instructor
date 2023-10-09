@@ -28,6 +28,7 @@ public class Settings extends Solo_AbstractComponents
 	
 	public WebElement InstructorDetailsBox()
 	{
+		waitForVisibilityOfElement(instructorDetailsBox);
 		return instructorDetailsBox;
 	}
 	
