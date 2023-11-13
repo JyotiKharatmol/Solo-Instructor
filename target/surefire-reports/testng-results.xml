@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-09T22:59:03 IST" name="Suite" finished-at="2023-10-09T22:59:30 IST" duration-ms="26364">
+  <suite started-at="2023-11-14T00:31:42 IST" name="Suite" finished-at="2023-11-14T00:32:04 IST" duration-ms="21358">
     <groups>
     </groups>
-    <test started-at="2023-10-09T22:59:03 IST" name="Test" finished-at="2023-10-09T22:59:30 IST" duration-ms="26364">
+    <test started-at="2023-11-14T00:31:42 IST" name="Test" finished-at="2023-11-14T00:32:04 IST" duration-ms="21358">
       <class name="Solo_Instructor.OnboardSettings">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-10-09T22:59:03 IST" name="initialize" finished-at="2023-10-09T22:59:15 IST" duration-ms="11346" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-11-14T00:31:42 IST" name="initialize" finished-at="2023-11-14T00:31:47 IST" duration-ms="5091" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="InstructorDetails()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-10-09T22:59:15 IST" name="InstructorDetails" finished-at="2023-10-09T22:59:29 IST" duration-ms="14918" status="PASS">
+        <test-method signature="InstructorDetails()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-11-14T00:31:47 IST" name="InstructorDetails" finished-at="2023-11-14T00:32:03 IST" duration-ms="16045" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- InstructorDetails -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-10-09T22:59:29 IST" name="teardown" finished-at="2023-10-09T22:59:30 IST" duration-ms="45" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Solo_Instructor.OnboardSettings@7c24b813]" started-at="2023-11-14T00:32:03 IST" name="teardown" finished-at="2023-11-14T00:32:04 IST" duration-ms="140" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->

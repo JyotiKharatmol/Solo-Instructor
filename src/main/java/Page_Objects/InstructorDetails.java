@@ -112,7 +112,7 @@ public class InstructorDetails extends SoloSettings_AbstractComponents
 		return georgiaState;
 	}
 	
-	@FindBy(css="input[name='zip']")
+	@FindBy(xpath="//div/div[8]/div/div/input")
 	WebElement zip;
 	
 	public WebElement zip()
